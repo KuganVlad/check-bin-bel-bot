@@ -90,7 +90,7 @@ async def process_count_pop_news(message: types.Message, state: FSMContext):
     try:
         count = int(message.text)
         if count > 0:
-            if len(str(count)) < 10:
+            if len(str(count)) < 10 and len(str(count)) > 5:
                 result = get_bank(message.text)
                 if result:
                     for i in result:
@@ -108,7 +108,7 @@ async def process_count_pop_news(message: types.Message, state: FSMContext):
                 else:
                     await message.answer("Информация о пренадлежности отсутствует")
             else:
-                await message.answer("Количество символов должно быть меньше 8")
+                await message.answer("Количество символов должно быть больше 6 и меньше 8")
         else:
                 await message.answer("Следующий раз, введите число, больше нуля.")
     except ValueError:
